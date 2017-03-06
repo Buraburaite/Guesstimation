@@ -3,31 +3,37 @@
 <head>
   <title><%= title %></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel='stylesheet' href="/stylesheets/everywhere.min.css"/>
 </head>
 <body>
   <header>
     <nav>
-      <ul>
-        <li>
+      <div class="container nav-container">
+        <div class="row nav-row">
           <a href="/">
-            <img class="logo" src="/images/logo.png" alt="Guesstimation - Questions Beat Answers">
+            <div class="col-sm-2 logo-col col">
+              <img class="logo-img" src="/images/logo.png" alt="Guesstimation - Questions Beat Answers">
+            </div>
           </a>
-        </li>
-        <% if (typeof userInfo === 'undefined') { %>
-          <li> <a href="/signup"> Sign Up </a> </li>
-          <li> <a href="/login"> Log In </a> </li>
-          <% } else { %>
-            <li> <a href="/logout"> Log Out </a> </li>
-            <% } %>
-          </ul>
-        </nav>
+          <div class="col-sm-8 title-col col">
+            <p class="title-p">Guesstimation</p>
+          </div>
+          <div class="col-sm-2 settings-col col">
+            <img class="settings-img" src="/images/settings.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="navpad">
+      </div>
+    </nav>
+  </header>
 
-      </header>
+  <div class="container content-container">
+    <%- body -%>
+  </div>
 
-      <%- body -%>
-
-      <footer>
-      </footer>
-    </body>
-    </html>
+  <footer>
+  </footer>
+</body>
+</html>

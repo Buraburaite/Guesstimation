@@ -1,21 +1,101 @@
+$pallete-1: #6C347C;
+$pallete-2: #360544;
+$pallete-3: #85349C;
+$pallete-4: #C47BD9;
+$pallete-5: #E199F6;
+
+
+@mixin border($size, $style, $color) {
+  -webkit-border: $size $style $color;
+  -moz-border: $size $style $color;
+  -ms-border: $size $style $color;
+  border: $size $style $color;
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
 body {
-  width: auto;
+  width: 100%;
   height: 2000px;
-  background-image: url('../images/background.png');
-  border: 4px solid black;
-  padding: 50px;
+  background: linear-gradient(
+  rgba(0, 0, 0, 0),
+  rgba(0, 0, 0, 0.9)
+  ),
+  url('../images/background.png');
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
-  nav {
+  header {
+    width: 100%;
 
-    .logo {
-      width: 20px;
-      height: auto;
+    .nav-container {
+      width: 100%;
+      padding: 0px;
+
+      .nav-row {
+        width: 100%;
+        height: 160px;
+        background: linear-gradient(
+        rgba($pallete-2, 1),
+        rgba($pallete-2, 0.9)
+        );
+        margin: 0px;
+
+        .col {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .logo-col {
+
+          .logo-img {
+            width: 120px;
+            height: 120px;
+          }
+        }
+
+        .title-col {
+
+          .title-p {
+            color: $pallete-5;
+            font-size: 8vw;
+            font-weight: bold;
+          }
+        }
+
+        .settings-col {
+          background: linear-gradient(
+          rgba($pallete-1, 0.5),
+          rgba($pallete-1, 0)
+          );
+
+          .settings-img {
+            width: 120px;
+            height: auto;
+            padding: 6px;
+            position: fixed;
+
+          }
+        }
+      }
+    }
+
+    .navpad {
+      height: 20px;
     }
   }
 
-  a {
-    color: #00B7FF;
+  .content-container {
+    width: 96%;
+    background-color: rgba($pallete-2, 0.96);
+    color: white;
+    @include border(4px, solid, $pallete-5);
+    @include border-radius(2px);
   }
 
   .error {
