@@ -1,22 +1,4 @@
-$pallete-1: #6C347C;
-$pallete-2: #360544;
-$pallete-3: #85349C;
-$pallete-4: #C47BD9;
-$pallete-5: #E199F6;
-
-
-@mixin border($size, $style, $color) {
-  -webkit-border: $size $style $color;
-  -moz-border: $size $style $color;
-  -ms-border: $size $style $color;
-  border: $size $style $color;
-}
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
-  -ms-border-radius: $radius;
-  border-radius: $radius;
-}
+@import "guesstimation-module";
 
 body {
   width: 100%;
@@ -27,10 +9,6 @@ body {
   ),
   url('../images/background.png');
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
-  .container {
-    width: 100%;
-  }
 
   header {
     width: 100%;
