@@ -1,8 +1,18 @@
 .index-container {
+
   .title-row {
     width: 100%;
     height: auto;
 
-    
+    .title-h1 {
+      font-size: 8vw;
+    }
+
+    .title-hr {
+      position: relative;
+      bottom: 30px;
+    }
+
+
   }
 }
