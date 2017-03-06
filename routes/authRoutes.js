@@ -7,7 +7,7 @@ const User     = require('../models/user-model.js');
 const authRoutes = Router();
 
 authRoutes.get('/signup', (req, res, next) => {
-  res.render('auth/signup-view');
+  res.render('auth/signup');
 });
 
 //Goal: Create an account
