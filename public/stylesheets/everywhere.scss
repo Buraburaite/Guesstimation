@@ -90,8 +90,10 @@ body {
     }
   }
 
-  .content-container {
+  .content-div {
     width: 96%;
+    padding: 10px;
+    margin: auto;
     background-color: rgba($pallete-2, 0.96);
     color: white;
     @include border(4px, solid, $pallete-5);
