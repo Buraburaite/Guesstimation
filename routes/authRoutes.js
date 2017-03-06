@@ -1,10 +1,9 @@
-const Router   = require('express').Router;
 const passport = require('passport');
 const bcrypt   = require('bcrypt');
 const User     = require('../models/user-model.js');
 
 
-const authRoutes = Router();
+const authRoutes = require('express').Router();
 
 authRoutes.get('/signup', (req, res, next) => {
   res.render('auth/signup');
@@ -41,9 +40,9 @@ authRoutes.post('/signup', (req, res, next) => {
 
     newUser.save((err) => {
       if (err) {
-        res.render('auth/signup', { message: 'Something went wrong' });
+        res.render('auth/signup', { message: 'Something went wrong, please try again.' });
       } else {
-        req.flash('success', 'You have been registered. Try logging in.');
+        req.flash('success', 'Your account has been registered.');
         res.redirect('/');
       }
     });
@@ -68,8 +67,8 @@ passport.authenticate('local', {
 
 authRoutes.get('/logout', (req, res) => {
   req.logout();
-  req.flash('success', 'You have logged out.');
-  res.redirect('/');
+  req.flash('success', 'You have been logged out.');
+  res.redirect('/login');
 });
 
 authRoutes.get('/auth/facebook', passport.authenticate('facebook'));

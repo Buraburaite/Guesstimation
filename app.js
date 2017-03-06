@@ -7,12 +7,13 @@ const cookieParser   = require('cookie-parser');
 const bodyParser     = require('body-parser');
 const layouts        = require('express-ejs-layouts');
 const session        = require('express-session');
+const MongoStore     = require('connect-mongo')(session);
+const flash          = require('connect-flash');
 const bcrypt         = require('bcrypt');
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
 const FBStrategy     = require('passport-facebook').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const flash          = require('connect-flash');
 const dotenv         = require('dotenv');
 
 
@@ -42,6 +43,11 @@ app.use(layouts);
 
 app.use(session({
   secret: 'If I don\'t end up playing RMyr, I wonder what I will end up playing ka',
+  cookie: { maxAge: 60000 * 24 }, //is this a day or 24 minutes?
+  store: new MongoStore({
+    mongooseConnection : mongoose.connection,
+    ttl: 24 * 60 * 60
+  }),
   resave: true,
   saveUninitialized: true
 }));

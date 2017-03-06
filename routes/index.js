@@ -1,8 +1,4 @@
-const Router = require('express').Router;
-
-
-
-const indexRoutes = Router();
+const indexRoutes = require('express').Router();
 
 indexRoutes.get('/', (req, res, next) => {
   res.render('index', {
