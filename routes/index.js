@@ -1,12 +1,22 @@
-const express = require('express');
-const router  = express.Router();
+const Router = require('express').Router;
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
+
+
+const indexRoutes = Router();
+
+indexRoutes.get('/', (req, res, next) => {
   res.render('index', {
     successMessage: req.flash('success'),
+    title: 'Guesstimation',
     userInfo: req.user
   });
 });
 
-module.exports = router;
+indexRoutes.get('/welcome', (req, res, next) => {
+  res.render('welcome', {
+    successMessage: req.flash('success'),
+    title: 'Guesstimation'
+  });
+});
+
+module.exports = indexRoutes;

@@ -1,63 +1,65 @@
-const express    = require("express");
-const authRoutes = express.Router();
-const passport   = require('passport');
+const Router   = require('express').Router;
+const passport = require('passport');
+const bcrypt   = require('bcrypt');
+const User     = require('../models/user-model.js');
 
-// User model
-const User       = require("../models/user-model.js");
 
-// Bcrypt to encrypt passwords
-const bcrypt     = require("bcrypt");
+const authRoutes = Router();
 
-authRoutes.get("/signup", (req, res, next) => {
-  res.render("auth/signup-view");
+authRoutes.get('/signup', (req, res, next) => {
+  res.render('auth/signup-view');
 });
 
-authRoutes.post("/signup", (req, res, next) => {
+//Goal: Create an account
+authRoutes.post('/signup', (req, res, next) => {
+  // Get their username and password...
   const username = req.body.username;
   const password = req.body.password;
 
-  if (username === "" || password === "") {
-    res.render("auth/signup-view", { message: "Indicate username and password" });
+  // ...make sure both were provided...
+  if (username === '' || password === '') {
+    res.render('auth/signup', { message: 'Please enter both a username and a password' });
     return;
   }
 
-  User.findOne({ username : username }, "username", (err, user) => {
+  // ...verify that username is available...
+  User.findOne({ username : username }, 'username', (err, user) => {
     if (user !== null) {
-      res.render("auth/signup-view", { message: "The username already exists" });
+      res.render('auth/signup', { message: 'That username already exists' });
       return;
     }
 
+    // ...information seems legitimate! So, let's encrypt the password...
     const salt     = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
 
+    // ...and create a new user with their credentials...
     const newUser = User({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
       username: username,
       encryptedPassword: hashPass
     });
 
     newUser.save((err) => {
       if (err) {
-        res.render("auth/signup-view", { message: "Something went wrong" });
+        res.render('auth/signup', { message: 'Something went wrong' });
       } else {
         req.flash('success', 'You have been registered. Try logging in.');
-        res.redirect("/");
+        res.redirect('/');
       }
     });
   });
 });
 
 authRoutes.get('/login', (req, res, next) => {
-  res.render('auth/login-view', {
+  res.render('auth/login', {
     errorMessage: req.flash('error')
   });
 });
 
 authRoutes.post('/login',
 passport.authenticate('local', {
-  successReturnToOrRedirect: "/",
-  failureRedirect: "/login",
+  successReturnToOrRedirect: '/',
+  failureRedirect: '/login',
   failureFlash: true,
   successFlash: 'Welcome!',
   passReqToCallback: true
@@ -76,14 +78,14 @@ authRoutes.get('/auth/facebook/callback', passport.authenticate('facebook', {
   failureRedirect: '/login'
 }));
 
-authRoutes.get("/auth/google", passport.authenticate("google", {
-  scope: ["https://www.googleapis.com/auth/plus.login",
-          "https://www.googleapis.com/auth/plus.profile.emails.read"]
+authRoutes.get('/auth/google', passport.authenticate('google', {
+  scope: ['https://www.googleapis.com/auth/plus.login',
+          'https://www.googleapis.com/auth/plus.profile.emails.read']
 }));
 
-authRoutes.get("/auth/google/callback", passport.authenticate("google", {
-  successRedirect: "/",
-  failureRedirect: "/login"
+authRoutes.get('/auth/google/callback', passport.authenticate('google', {
+  successRedirect: '/',
+  failureRedirect: '/login'
 }));
 
 module.exports = authRoutes;

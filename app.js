@@ -17,6 +17,7 @@ const dotenv         = require('dotenv');
 
 
 const User = require('./models/user-model.js');
+
 const app = express();
 
 dotenv.config();
@@ -25,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('layout', 'layouts/main-layout');
+app.set('layout', 'layouts/everywhere');
 
 // default value for title local
 app.locals.title = 'My Secure Site';
@@ -40,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
 app.use(session({
-  secret: 'our passport local strategy app',
+  secret: 'If I don\'t end up playing RMyr, I wonder what I will end up playing ka',
   resave: true,
   saveUninitialized: true
 }));
@@ -107,7 +108,7 @@ passport.use(new GoogleStrategy({
 //======================================================================<ROUTES>
 const index = require('./routes/index.js');
 app.use('/', index);
-const authRoutes = require('./routes/authR.js');
+const authRoutes = require('./routes/authRoutes.js');
 app.use('/', authRoutes);
 
 // catch 404 and forward to error handler

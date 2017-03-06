@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
-  firstName: { type: String, default: 'Izzy' },
-  lastName:  { type: String, default: 'Ironside' },
+  firstName: { type: String, default: 'Danny' },
+  lastName:  { type: String, default: 'Default' },
   username:  { type: String, required: true },
   encryptedPassword: { type: String, required: true }
 }, {
