@@ -9,29 +9,16 @@
     <div class="row question-row center-block">
       <p><%= problems[0].question.trim() %></p>
     </div>
-    <div class="row choices-row center-block">
-      <div class="col-sm-11 choices-col col">
-        <div class="row choice-row">
-          <div class="col-sm-1 letter-col col">
-            A
-          </div>
-          <div class="col-sm-11 choice-col">
-            <%= problems[0].choices[0].trim() %>
-            <%= problems[0] %>
-          </div>
+    <% letters = ['A', 'B', 'C', 'D', 'E']; %>
+    <% problems[0].choices.forEach((choice, index) => { %>
+      <div class="row choice-row">
+        <div class="col-sm-2 letter-col col">
+          <%= letters[index] %>
+        </div>
+        <div class="col-sm-10 choice-col col">
+          <%= choice.trim() %>
         </div>
       </div>
-      <div class="col-sm-1 nav-col">
-        <div class="row up-row">
-          <i class="up-arrow fa fa-long-arrow-up" aria-hidden="true"></i>
-        </div>
-        <div class="row data-row">
-          +5%
-        </div>
-        <div class="row down-row">
-          DOWN
-        </div>
-      </div>
+      <% }); %>
     </div>
   </div>
-</div>

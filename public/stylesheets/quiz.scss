@@ -21,64 +21,43 @@
 
     .question-row {
       width: 100%;
+      padding: 40px;
+      background-color: white;
+      @include border(2px, solid, white);
+      @include border-radius(40px);
 
       p {
-        padding-left: -8vw;
+        padding-left: 8vw;
         font-size: 8vw;
+        color: $pallete-1;
+        font-weight: bolder;
       }
 
       p:first-letter {
-        margin-left: 8vw;
+        margin-left: -8vw;
       }
 
     }
 
-    .choices-row {
+    .choice-row {
       width: 100%;
+      border-bottom: 2px dashed white;
 
-      .choices-col {
-        height: auto;
-
-        .choice-row {
-          width: 100%;
-          @include border(2px, solid, white);
-
-          .letter-col {
-            font-size: 6vw;
-
-          }
-
-          .choice-col {
-            font-size: 6vw;
-
-          }
-        }
+      .col {
+        padding: 20px;
       }
 
-      .nav-col {
-        height: auto;
+      .letter-col {
+        text-align: center;
+        font-size: 6vw;
 
-        .row {
-          width: 100%;
-          padding: 0px;
-          margin: 0px;
+      }
 
-          i {
-            font-size: 16vw;
-          }
-        }
+      .choice-col {
+        font-size: 6vw;
+        border-left: 2px dashed white;
 
-        .up-row {
 
-        }
-
-        .data-row {
-
-        }
-
-        .down-row {
-
-        }
       }
     }
   }
