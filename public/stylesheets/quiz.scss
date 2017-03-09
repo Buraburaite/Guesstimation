@@ -23,12 +23,12 @@
       width: 100%;
 
       p {
-        padding-left: -4vw;
-        font-size: 4vw;
+        padding-left: -8vw;
+        font-size: 8vw;
       }
 
       p:first-letter {
-        margin-left: 4vw;
+        margin-left: 8vw;
       }
 
     }
@@ -37,25 +37,32 @@
       width: 100%;
 
       .choices-col {
-        width: 80%;
+        height: auto;
 
         .choice-row {
           width: 100%;
+          @include border(2px, solid, white);
 
           .letter-col {
-            font-size: 2vw;
+            font-size: 6vw;
 
           }
 
           .choice-col {
-            font-size: 2vw;
+            font-size: 6vw;
 
           }
         }
       }
 
       .nav-col {
-        width: 20%;
+        height: auto;
+
+        .row {
+          width: 100%;
+          padding: 0px;
+          margin: 0px;
+        }
 
         .up-row {
 
