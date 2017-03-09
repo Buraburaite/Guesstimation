@@ -2,10 +2,10 @@ const quizRoutes = require('express').Router();
 const Quiz = require('../models/quiz-model.js');
 
 quizRoutes.get('/quiz/:topic', (req, res, next) => {
-  topic = req.topic;
+  topic = req.params.topic.toLowerCase();
   console.log(topic);
 
-  Quiz.findOne({ topic }, (err, quizDoc) => {
+  Quiz.findOne({ topic_lower : topic }, (err, quizDoc) => {
     if (err) {
       next(err);
       return;
