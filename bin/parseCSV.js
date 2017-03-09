@@ -4,6 +4,10 @@ const Quiz     = require('../models/quiz-model.js');
 const dotenv   = require('dotenv');
 //===Imports
 
+
+/*====
+This code populates the quizzes database, assuming it's empty.
+====*/
 dotenv.config();
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -33,7 +37,12 @@ data.forEach((row) => {
     if (row[5] !== '') { choices.push(row[5]); }
     if (row[6] !== '') { choices.push(row[6]); }
 
-    choices.map((choice) => choice.replace('*', ','));
+    choices.map((choice) => {
+      while (choice.includes('*')) {
+        choice = choice.replace('*', ',');
+      }
+      return choice;
+    });
 
     //Problem is a component of the Quiz mongoose Schema,
     //containing a question (string), an array of choices,
@@ -50,26 +59,26 @@ data.forEach((row) => {
       }
 
       if (quizDoc) {
-        // quizDoc.problems.push(problem);
-        quizDoc.topic_lower = topic.toLowerCase();
+        quizDoc.problems.push(problem);
         quizDoc.save((err2) => {
           if (err2) {
             throw err2;
           }
         });
       } else {
-        // let newQuiz = new Quiz({
-        //   topic : topic,
-        //   problems : [problem]
-        // });
-        //
-        // console.log(newQuiz);
-        //
-        // newQuiz.save((err2) => {
-        //   if (err2) {
-        //     throw err2;
-        //   }
-        // });
+        let newQuiz = new Quiz({
+          topic : topic,
+          topic_lower : topic.toLowerCase(),
+          problems : [problem]
+        });
+
+        console.log(topic);
+
+        newQuiz.save((err2) => {
+          if (err2) {
+            throw err2;
+          }
+        });
       }
     });
 
