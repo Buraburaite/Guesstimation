@@ -1,0 +1,59 @@
+@import "guesstimation-module";
+
+.quiz-container {
+
+  .title-row {
+    width: 100%;
+    height: auto;
+
+    .title-h1 {
+      font-size: 12vw;
+    }
+
+    .title-hr {
+      position: relative;
+      bottom: 10px;
+    }
+  }
+
+  .problem-row {
+    width: 90%;
+
+    .question-row {
+      width: 100%;
+
+    }
+
+    .choices-row {
+
+      .choices-col {
+
+        .choice-row {
+
+          .letter-col {
+
+          }
+
+          .choice-col {
+
+          }
+        }
+      }
+
+      .nav-col {
+
+        .up-row {
+
+        }
+
+        .data-row {
+
+        }
+
+        .down-row {
+
+        }
+      }
+    }
+  }
+}
