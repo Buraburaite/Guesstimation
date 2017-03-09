@@ -22,25 +22,40 @@
     .question-row {
       width: 100%;
 
+      p {
+        padding-left: -4vw;
+        font-size: 4vw;
+      }
+
+      p:first-letter {
+        margin-left: 4vw;
+      }
+
     }
 
     .choices-row {
+      width: 100%;
 
       .choices-col {
+        width: 80%;
 
         .choice-row {
+          width: 100%;
 
           .letter-col {
+            font-size: 2vw;
 
           }
 
           .choice-col {
+            font-size: 2vw;
 
           }
         }
       }
 
       .nav-col {
+        width: 20%;
 
         .up-row {
 
