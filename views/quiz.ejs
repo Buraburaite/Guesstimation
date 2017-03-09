@@ -5,20 +5,23 @@
     <h3 class="title-h3 center-block"><%= 'Difficulty: ' + difficulty %></h3>
     <hr class="title-hr">
   </div>
-  <div class="row problem-row center-block">
-    <div class="row question-row center-block">
-      <p><%= problems[0].question.trim() %></p>
-    </div>
-    <% letters = ['A', 'B', 'C', 'D', 'E']; %>
-    <% problems[0].choices.forEach((choice, index) => { %>
-      <div class="row choice-row">
-        <div class="col-sm-2 letter-col col">
-          <%= letters[index] %>
+  <%= problems.length %>
+  <% problems.forEach((problem, problemIndex) => { %>
+    <div class="row problem-row center-block">
+      <div class="row question-row center-block">
+        <p><%= problem.question.trim() %></p>
+      </div>
+      <% letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G']; %>
+      <% problem.choices.forEach((choice, choiceIndex) => { %>
+        <div class="row choice-row">
+          <div class="col-sm-2 letter-col col">
+            <%= letters[choiceIndex] %>
+          </div>
+          <div class="col-sm-10 choice-col col">
+            <%= choice.trim() %>
+          </div>
         </div>
-        <div class="col-sm-10 choice-col col">
-          <%= choice.trim() %>
-        </div>
+        <% }); %>
       </div>
       <% }); %>
     </div>
-  </div>

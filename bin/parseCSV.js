@@ -17,6 +17,15 @@ const fileString = require('fs')
 let data = fileString.split('\r\n');
 let quizzes = {};
 
+function replaceAst(str) {
+  console.log(str);
+  while (str.includes('*')) {
+    str = str.replace('*', ',');
+  }
+  console.log(str);
+  return str;
+}
+
 data.forEach((row) => {
   row = row.split(',');
 
@@ -28,21 +37,17 @@ data.forEach((row) => {
     7:   Answer
     ====*/
 
-    let question = row[0].replace('*', ',');
-    let topic = row[1].replace('*', ',');
-    let answer = row[7].replace('*', ',');
+    //Replace asterisks with commas (i.e., undo csv modification)
+    row.map((col) => replaceAst(col));
+
+    let question = row[0];
+    let topic = row[1];
+    let answer = row[7];
 
     //All quizzes have at least three answer choices
     let choices = [row[2], row[3], row[4]];
     if (row[5] !== '') { choices.push(row[5]); }
     if (row[6] !== '') { choices.push(row[6]); }
-
-    choices.map((choice) => {
-      while (choice.includes('*')) {
-        choice = choice.replace('*', ',');
-      }
-      return choice;
-    });
 
     //Problem is a component of the Quiz mongoose Schema,
     //containing a question (string), an array of choices,
@@ -53,35 +58,17 @@ data.forEach((row) => {
       answer   : answer
     };
 
-    Quiz.findOne({ topic : topic }, (err, quizDoc) => {
-      if (err) {
-        throw err;
-      }
-
-      if (quizDoc) {
-        quizDoc.problems.push(problem);
-        quizDoc.save((err2) => {
-          if (err2) {
-            throw err2;
-          }
-        });
-      } else {
-        let newQuiz = new Quiz({
-          topic : topic,
-          topic_lower : topic.toLowerCase(),
-          problems : [problem]
-        });
-
-        console.log(topic);
-
-        newQuiz.save((err2) => {
-          if (err2) {
-            throw err2;
-          }
-        });
-      }
-    });
+    if (!quizzes[topic]) {
+      quizzes[topic] = {};
+      quizzes[topic].topic_lower = topic.toLowerCase();
+      quizzes[topic].problems = [];
+    }
+    quizzes[topic].problems.push(problem);
 
   }
 });
+
+console.log(quizzes);
+
+
 setTimeout(() => { mongoose.connection.close(); }, 2000);
