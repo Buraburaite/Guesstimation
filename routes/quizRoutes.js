@@ -13,6 +13,7 @@ quizRoutes.get('/quiz/:topic', (req, res, next) => {
 
     if (quizDoc) {
       res.render('quiz', {
+        difficulty : 'Impossible?',
         quiz : quizDoc,
         topic : quizDoc.topic,
         problems : quizDoc.problems,

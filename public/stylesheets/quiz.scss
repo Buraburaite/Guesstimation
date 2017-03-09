@@ -7,7 +7,18 @@
     height: auto;
 
     .title-h1 {
-      font-size: 12vw;
+      font-size: 16vw;
+    }
+
+    .title-h3 {
+      width: 80%;
+      height: auto;
+      padding: 4px;
+      position: relative;
+      bottom: 18px;
+      color: white;
+      font-size: 7vw;
+      background-color: $pallete-3;
     }
 
     .title-hr {
@@ -21,9 +32,8 @@
 
     .question-row {
       width: 100%;
-      padding: 40px;
+      padding: 30px;
       background-color: white;
-      @include border(2px, solid, white);
       @include border-radius(40px);
 
       p {
@@ -49,12 +59,14 @@
 
       .letter-col {
         text-align: center;
-        font-size: 6vw;
+        font-size: 10vw;
+        font-weight: bolder;
 
       }
 
       .choice-col {
         font-size: 6vw;
+        font-style: italic;
         border-left: 2px dashed white;
 
 
