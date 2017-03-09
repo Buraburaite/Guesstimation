@@ -78,4 +78,15 @@
       }
     }
   }
+
+  .submit-row {
+    width: 400px;
+
+    .submit-quiz-btn {
+      height: 200px;
+      width: 100%;
+      color: black;
+      font-size: 4vh;
+    }
+  }
 }

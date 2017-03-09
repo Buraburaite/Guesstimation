@@ -1,3 +1,12 @@
+// const Quiz = require('../../models/quiz-model.js');
+//
+const problems = null;
+
+Quiz.find({}, (err, quizDocs) => {
+
+  // quizDocs.findEach
+});
+
 $(document).ready((e) => {
   $('.choice-row').each( (index, el) => {
     $(el).click((e) => {
@@ -10,4 +19,8 @@ $(document).ready((e) => {
       }
     });
   });
+
+  let footer = $('footer');
+  console.log(footer);
+  $('footer').remove();
 });
