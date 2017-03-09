@@ -6,7 +6,7 @@ const dotenv   = require('dotenv');
 
 
 /*====
-This code populates the quizzes database, assuming it's empty.
+This code populates the quizzes collection, assuming it's empty.
 ====*/
 dotenv.config();
 mongoose.connect(process.env.MONGODB_URI);
@@ -18,11 +18,9 @@ let data = fileString.split('\r\n');
 let quizzes = {};
 
 function replaceAst(str) {
-  console.log(str);
   while (str.includes('*')) {
     str = str.replace('*', ',');
   }
-  console.log(str);
   return str;
 }
 
@@ -68,7 +66,21 @@ data.forEach((row) => {
   }
 });
 
-console.log(quizzes);
+topics = Object.keys(quizzes);
+topics.forEach((topic) => {
+
+  newQuiz = new Quiz({
+    topic : topic,
+    topic_lower : quizzes[topic].topic_lower,
+    problems : quizzes[topic].problems
+  });
+
+  newQuiz.save((err) => {
+    if (err) {
+      throw err;
+    }
+  });
+});
 
 
 setTimeout(() => { mongoose.connection.close(); }, 2000);
