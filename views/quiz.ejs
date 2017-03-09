@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="/stylesheets/quiz.min.css" defer/>
+<script src="/javascripts/quiz.js" type="text/javascript" defer></script>
 <div class="container-fluid quiz-container">
   <div class="row title-row center-block text-center">
     <h1 class="title-h1"><%= topic %></h1>
     <h3 class="title-h3 center-block"><%= 'Difficulty: ' + difficulty %></h3>
     <hr class="title-hr">
   </div>
-  <%= problems.length %>
   <% problems.forEach((problem, problemIndex) => { %>
     <div class="row problem-row center-block">
       <div class="row question-row center-block">
