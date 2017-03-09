@@ -1,13 +1,11 @@
 //===Imports
 const mongoose = require('mongoose');
 const Quiz     = require('../models/quiz-model.js');
-const Problem  = require('../models/problem-model.js');
 const dotenv   = require('dotenv');
 //===Imports
 
 dotenv.config();
 mongoose.connect(process.env.MONGODB_URI);
-console.log(process.env.MONGODB_URI);
 
 const fileString = require('fs')
 .readFileSync(__dirname + '/quizzes.csv', 'utf8');
@@ -52,20 +50,26 @@ data.forEach((row) => {
       }
 
       if (quizDoc) {
-        quizDoc.problems.push(problem);
-      } else {
-        let newQuiz = new Quiz({
-          topic : topic,
-          problems : [problem]
-        });
-
-        console.log(newQuiz);
-
-        newQuiz.save((err) => {
-          if (err) {
-            throw err;
+        // quizDoc.problems.push(problem);
+        quizDoc.topic_lower = topic.toLowerCase();
+        quizDoc.save((err2) => {
+          if (err2) {
+            throw err2;
           }
         });
+      } else {
+        // let newQuiz = new Quiz({
+        //   topic : topic,
+        //   problems : [problem]
+        // });
+        //
+        // console.log(newQuiz);
+        //
+        // newQuiz.save((err2) => {
+        //   if (err2) {
+        //     throw err2;
+        //   }
+        // });
       }
     });
 

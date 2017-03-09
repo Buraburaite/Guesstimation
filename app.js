@@ -116,6 +116,10 @@ const index = require('./routes/index.js');
 app.use('/', index);
 const authRoutes = require('./routes/authRoutes.js');
 app.use('/', authRoutes);
+const quizRoutes = require('./routes/quizRoutes.js');
+app.use('/', quizRoutes);
+
+//=====================================================================</ROUTES>
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -124,7 +128,6 @@ app.use((req, res, next) => {
   next(err);
 });
 
-//=====================================================================</ROUTES>
 
 // error handler
 app.use((err, req, res, next) => {
