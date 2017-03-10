@@ -2,11 +2,10 @@ const quizRoutes = require('express').Router();
 const ensure = require('connect-ensure-login');
 const Quiz = require('../models/quiz-model.js');
 
-quizRoutes.get('/quiz/:topic', ensure.ensureLoggedIn(), (req, res, next) => {
-  topic = req.params.topic.toLowerCase();
-  console.log(topic);
+quizRoutes.get('/quiz/:topic_url', ensure.ensureLoggedIn(), (req, res, next) => {
+  topic_url = req.params.topic;
 
-  Quiz.findOne({ topic_lower : topic }, (err, quizDoc) => {
+  Quiz.findOne({ topic_url : topic-url }, (err, quizDoc) => {
     if (err) {
       next(err);
       return;
