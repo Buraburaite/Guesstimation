@@ -1,7 +1,8 @@
 const quizRoutes = require('express').Router();
+const ensure = require('connect-ensure-login');
 const Quiz = require('../models/quiz-model.js');
 
-quizRoutes.get('/quiz/:topic', (req, res, next) => {
+quizRoutes.get('/quiz/:topic', ensure.ensureLoggedIn(), (req, res, next) => {
   topic = req.params.topic.toLowerCase();
   console.log(topic);
 

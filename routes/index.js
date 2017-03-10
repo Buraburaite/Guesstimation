@@ -1,6 +1,7 @@
 const indexRoutes = require('express').Router();
+const ensure = require('connect-ensure-login');
 
-indexRoutes.get('/', (req, res, next) => {
+indexRoutes.get('/', ensure.ensureLoggedIn(), (req, res, next) => {
   res.render('index', {
     successMessage: req.flash('success'),
     title: 'Guesstimation',

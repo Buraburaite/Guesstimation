@@ -1,42 +1,45 @@
 @import "guesstimation-module";
 
+body {
+  @include border(4px, solid, white);
+}
+
 .content-wrapper {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 
-  .title-div {
-    width: 90%;
+  .title-img {
+    width: 30vh;
+    height: auto;
+    position: relative;;
+    top: 10vh;
+    left: -8vw;
+
+  }
+
+  .title-p {
+    width: 100%;
     height: auto;
     padding: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $pallete-2;
-    @include border(8px, solid, $pallete-5);
-    @include border-radius(40px);
+    position: absolute;;
+    top: 40vh;
+    z-index: 1;
+    color: white;
+    font-size: 11.5vw;
+    font-weight: bolder;
+    background-image: url('/images/banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 
-    .title-img {
-      position: absolute;
-      left: -50px;
-      bottom: 80vh;
-      width: 20%;
-      height: auto;
-
-    }
-
-    .title-p {
-      text-align: center;
-      font-size: 12vw;
-      font-weight: bolder;
-      color: white;
-    }
   }
 
   .btn {
     height: auto;
     width: 400px;
+    position: relative;
     font-size: 8vw;
     font-weight: bolder;
     background-repeat: no-repeat;
@@ -46,6 +49,7 @@
   }
 
   .signup-btn {
+    top: 28vh;
     color: white;
     background-color: transparent;
     @include border(4px, solid, white);
@@ -53,6 +57,7 @@
   }
 
   .login-btn {
+    top: 30vh;
     color: $pallete-5;
     background: linear-gradient(
     180deg,
@@ -60,7 +65,5 @@
     $pallete-2 45%
     );
     @include border(4px, solid, $pallete-5);
-
-
   }
 }
