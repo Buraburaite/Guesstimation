@@ -17,9 +17,9 @@ const fileString = require('fs')
 let data = fileString.split('\r\n');
 let quizzes = {};
 
-function replaceAst(str) {
-  while (str.includes('*')) {
-    str = str.replace('*', ',');
+function replaceAll(str, oldChar, newChar) {
+  while (str.includes(oldChar)) {
+    str = str.replace(oldChar, newChar);
   }
   return str;
 }
@@ -36,7 +36,7 @@ data.forEach((row) => {
     ====*/
 
     //Replace asterisks with commas (i.e., undo csv modification)
-    row.map((col) => replaceAst(col));
+    row.map((col) => replaceAll(col, '*', ','));
 
     let question = row[0];
     let topic = row[1];
@@ -58,7 +58,7 @@ data.forEach((row) => {
 
     if (!quizzes[topic]) {
       quizzes[topic] = {};
-      quizzes[topic].topic_lower = topic.toLowerCase();
+      quizzes[topic].topic_url = replaceAll(topic.toLowerCase(), ' ', '-');
       quizzes[topic].problems = [];
     }
     quizzes[topic].problems.push(problem);
@@ -71,7 +71,7 @@ topics.forEach((topic) => {
 
   newQuiz = new Quiz({
     topic : topic,
-    topic_lower : quizzes[topic].topic_lower,
+    topic_url : quizzes[topic].topic_url,
     problems : quizzes[topic].problems
   });
 

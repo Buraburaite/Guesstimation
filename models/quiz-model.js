@@ -9,7 +9,7 @@ const problemSchema = new Schema({
 
 const quizSchema = new Schema({
   topic       : { type: String, required: true },
-  topic_lower : { type : String, required: true},
+  topic_url   : { type : String, required: true},
   problems    : [problemSchema]
 });
 
