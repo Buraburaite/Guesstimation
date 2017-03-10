@@ -5,7 +5,7 @@ const Quiz = require('../models/quiz-model.js');
 quizRoutes.get('/quiz/:topic_url', ensure.ensureLoggedIn(), (req, res, next) => {
   topic_url = req.params.topic_url;
 
-  Quiz.findOne({ topic_url : topic-url }, (err, quizDoc) => {
+  Quiz.findOne({ topic_url : topic_url }, (err, quizDoc) => {
     if (err) {
       next(err);
       return;
