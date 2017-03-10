@@ -61,6 +61,8 @@ body {
           height: auto;
           padding: 6px;
           position: fixed;
+          top: 1.5vh;
+          right: 2.5vw;
           z-index: 100;
           background-color: rgba(white, 0.3);
           @include border-radius(40px);

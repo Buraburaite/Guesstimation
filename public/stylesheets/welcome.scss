@@ -38,7 +38,8 @@ body {
 
   .btn {
     height: auto;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     position: relative;
     font-size: 8vw;
     font-weight: bolder;
