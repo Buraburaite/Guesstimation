@@ -1,17 +1,17 @@
 const indexRoutes = require('express').Router();
-const ensure = require('connect-ensure-login');
 
-indexRoutes.get('/', ensure.ensureLoggedIn(), (req, res, next) => {
+indexRoutes.get('/', (req, res, next) => {
   if (!req.user) {
     res.redirect('/welcome');
+    return;
   }
-  console.log('Hello World!');
 
   res.render('index', {
     successMessage: req.flash('success'),
     title: 'Guesstimation',
     userInfo: req.user
   });
+  return;
 });
 
 indexRoutes.get('/welcome', (req, res, next) => {
@@ -19,6 +19,7 @@ indexRoutes.get('/welcome', (req, res, next) => {
     successMessage: req.flash('success'),
     title: 'Guesstimation'
   });
+  return;
 });
 
 module.exports = indexRoutes;
