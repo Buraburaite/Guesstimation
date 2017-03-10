@@ -45,7 +45,7 @@ body {
 
         .title-p {
           color: white;
-          font-size: 8vw;
+          font-size: 9vw;
           font-weight: bold;
         }
       }
@@ -57,14 +57,15 @@ body {
         );
 
         .settings-img {
-          width: 120px;
-          height: auto;
+          width: 12vw;
+          height: 12vw;
           padding: 6px;
           position: fixed;
           top: 1.5vh;
           right: 2.5vw;
           z-index: 100;
-          background-color: rgba(white, 0.3);
+          background-image: url('/images/settings.png');
+          background-size: cover;
           @include border-radius(40px);
 
         }
