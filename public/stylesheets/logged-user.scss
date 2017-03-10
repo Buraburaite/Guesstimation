@@ -1,0 +1,119 @@
+@import "guesstimation-module";
+
+$navpad-height: 34px;
+
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+  rgba(0, 0, 0, 0),
+  rgba(0, 0, 0, 0.9)
+  ),
+  url('../images/background.png');
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  header {
+    width: 100%;
+    padding: 0px;
+
+    .nav-row {
+      width: 100%;
+      height: 10vh;
+      background: linear-gradient(
+      rgba($pallete-2, 1),
+      rgba($pallete-2, 0.9)
+      );
+      margin: 0px;
+
+      .col {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo-col {
+
+        .logo-img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      .title-col {
+
+        .title-p {
+          color: $pallete-5;
+          font-size: 8vw;
+          font-weight: bold;
+        }
+      }
+
+      .settings-col {
+        background: linear-gradient(
+        rgba($pallete-1, 0.5),
+        rgba($pallete-1, 0)
+        );
+
+        .settings-img {
+          width: 120px;
+          height: auto;
+          padding: 6px;
+          position: fixed;
+          z-index: 100;
+          background-color: rgba(white, 0.3);
+          @include border-radius(40px);
+
+        }
+      }
+    }
+
+    .navpad {
+      height: $navpad-height;
+    }
+  }
+
+  .content-div {
+    width: 94%;
+    height: 100%;
+    min-height: 88vh;
+    padding: 10px;
+    margin: auto;
+    background-color: rgba($pallete-2, 0.96);
+    color: white;
+    @include border(4px, solid, $pallete-5);
+    @include border-radius(2px);
+  }
+
+  footer {
+    width: 100%;
+    height: 16vh;
+    position: absolute;
+    bottom: 0px;
+    z-index: 99;
+
+    .footer-info-row {
+      height: 22%;
+      background-color: black;
+
+      .footer-info-col {
+        color: white;
+        font-size: 2vw;
+
+      }
+    }
+  }
+
+  .error {
+    background-color: red;
+    color: white;
+    padding: 20px;
+  }
+
+  .success {
+    background-color: lightgreen;
+    color: white;
+    padding: 20px;
+  }
+}

@@ -1,30 +1,54 @@
+<link rel="stylesheet" href="/stylesheets/logged-user.min.css" defer>
 <link rel="stylesheet" href="/stylesheets/quiz.min.css" defer/>
 <script src="/javascripts/quiz.js" type="text/javascript" defer></script>
-<div class="container-fluid quiz-container">
-  <div class="row title-row center-block text-center">
-    <h1 class="title-h1"><%= topic %></h1>
-    <h3 class="title-h3 center-block"><%= 'Difficulty: ' + difficulty %></h3>
-    <hr class="title-hr">
-  </div>
-  <% problems.forEach((problem, problemIndex) => { %>
-    <div class="row problem-row center-block">
-      <div class="row question-row center-block">
-        <p><%= problem.question.trim() %></p>
+
+<header class="nav-container">
+  <nav>
+    <div class="row nav-row">
+      <a href="/">
+        <div class="col-sm-2 logo-col col">
+          <img class="logo-img" src="/images/logo.png" alt="Guesstimation - Questions Beat Answers">
+        </div>
+      </a>
+      <div class="col-sm-8 title-col col">
+        <p class="title-p">Guesstimation</p>
       </div>
-      <% letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G']; %>
-      <% problem.choices.forEach((choice, choiceIndex) => { %>
-        <div class="row choice-row">
-          <div class="col-sm-2 letter-col col">
-            <%= letters[choiceIndex] %>
+      <div class="col-sm-2 settings-col col">
+        <img class="settings-img" src="/images/settings.png" alt="">
+      </div>
+    </div>
+  </nav>
+  <div class="navpad">
+  </div>
+</header>
+
+<div class="content-div">
+  <div class="container-fluid quiz-container">
+    <div class="row title-row center-block text-center">
+      <h1 class="title-h1"><%= topic %></h1>
+      <h3 class="title-h3 center-block"><%= 'Difficulty: ' + difficulty %></h3>
+      <hr class="title-hr">
+    </div>
+    <% problems.forEach((problem, problemIndex) => { %>
+      <div class="row problem-row center-block">
+        <div class="row question-row center-block">
+          <p><%= problem.question.trim() %></p>
+        </div>
+        <% letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G']; %>
+        <% problem.choices.forEach((choice, choiceIndex) => { %>
+          <div class="row choice-row">
+            <div class="col-sm-2 letter-col col">
+              <%= letters[choiceIndex] %>
+            </div>
+            <div class="col-sm-10 choice-col col">
+              <%= choice.trim() %>
+            </div>
           </div>
-          <div class="col-sm-10 choice-col col">
-            <%= choice.trim() %>
-          </div>
+          <% }); %>
         </div>
         <% }); %>
-      </div>
-      <% }); %>
-      <div class="row submit-row center-block">
-        <button class="submit-quiz-btn" type="submit" name="submitQuiz">Submit</button>
+        <div class="row submit-row center-block">
+          <button class="submit-quiz-btn" type="submit" name="submitQuiz">Submit</button>
+        </div>
       </div>
     </div>
