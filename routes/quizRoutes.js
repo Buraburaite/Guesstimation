@@ -3,7 +3,7 @@ const ensure = require('connect-ensure-login');
 const Quiz = require('../models/quiz-model.js');
 
 quizRoutes.get('/quiz/:topic_url', ensure.ensureLoggedIn(), (req, res, next) => {
-  topic_url = req.params.topic;
+  topic_url = req.params.topic_url;
 
   Quiz.findOne({ topic_url : topic-url }, (err, quizDoc) => {
     if (err) {
