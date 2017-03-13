@@ -8,15 +8,24 @@ const problems = null;
 // });
 
 $(document).ready((e) => {
-  $('.choice-row').each( (index, el) => {
-    $(el).click((e) => {
 
-      let color = $(el).css('color');
-      if (color === 'rgb(255, 255, 255)') {
-        $(el).css('color', 'gray');
+  const answers = {};
+
+  $('.problem-row').each( (index, el) => {
+    answers['problem-' + index] = $(el).attr('answer');
+  });
+
+  $('.choice-row').each( (index, el) => {
+    const row = $(el);
+
+    row.click((e) => {
+
+      if (row.css('color') === 'rgb(255, 255, 255)') {
+        row.css('color', 'gray');
       } else {
-        $(el).css('color', 'white');
+        row.css('color', 'white');
       }
     });
   });
+
 });
