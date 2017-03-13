@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/stylesheets/logged-user.min.css" defer>
 <link rel="stylesheet" href="/stylesheets/quiz.min.css" defer/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" defer></script>
 <script src="/javascripts/quiz.js" type="text/javascript" defer></script>
 
 <header class="nav-container">
@@ -51,7 +52,9 @@
       </div>
       <% }); %>
       <div class="row submit-row center-block">
-        <button class="submit-quiz-btn" type="submit" name="submitQuiz">Submit</button>
+        <a href="/" class="submit-btn btn btn-default hvr-buzz-out" alt="">
+          Submit Quiz
+        </a>
       </div>
     </div>
   </div>
