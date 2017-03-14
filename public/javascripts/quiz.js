@@ -1,9 +1,19 @@
 $(document).ready((e) => {
 
-  //Save the answers in an object
-  const answers = {};
+//NOTE: Asynchronous, need to break into callback functions
+
+  /*===
+  Save the problems and their answers in an object
+  Create an empty array to fill with the choices that
+  the user left unrejected
+  ===*/
+  const problems = {};
   $('.problem-row').each( (index, el) => {
-    answers['problem-' + index] = $(el).attr('answer');
+    const problemId = 'problem-' + index;
+    problems[problemId] = {};
+
+    problems[problemId].answer = $(el).attr('answer');
+    problems[problemId].possibles = [];
   });
 
   //Although a named color can be set,
@@ -30,21 +40,21 @@ $(document).ready((e) => {
     const totalProblems = problems.length;
     let result = 0;
 
-    problems.each( (problemIndex, problemEl) => {
-      const problem = 'problem-' + problemIndex;
-      const possibles = [];
+    $('.problem-row').each( (problemIndex, problemEl) => {
+      const problemId = 'problem-' + problemIndex;
 
-      $('.choice-row').each( (rowIndex, choiceEl) => {
+      $('.choice-col').each( (rowIndex, choiceEl) => {
         const choice = $(choiceEl);
 
         if (choice.css('color') === white) {
-          possibles.push(choice.html());
+          problems[problemId].possibles.push(choice.text());
         }
       });
 
-      const userAnswer = _.sample(possibles);
-      if (userAnswer === answers[problem]) {
-        result++;
+      for (let i = 0; i < totalProblems; i++) {
+        if (_.sample(problems[problemId].possibles) === problems[problemId].answer) {
+          result++;
+        }
       }
     });
 
