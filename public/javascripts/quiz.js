@@ -47,17 +47,21 @@ $(document).ready((e) => {
       $(problemEl).find('.choice-col').each( (rowIndex, choiceEl) => {
         const choice = $(choiceEl);
 
-        if (choice.css('color') === white) {
+        if (choice.css('color') === white || choice.css('color') === 'white') {
           problems[problemId].possibles.push(choice.text().trim());
         }
       });
-
-      for (let i = 0; i < totalProblems; i++) {
-        if (_.sample(problems[problemId].possibles) === problems[problemId].answer) {
-          result++;
-        }
-      }
     });
+
+    for (let i = 0; i < totalProblems; i++) {
+      const problemId = 'problem-' + i;
+      const randomChoice = _.sample(problems[problemId].possibles);
+      const answer = problems[problemId].answer;
+      const isCorrect = randomChoice === answer;
+      console.log(isCorrect, randomChoice);
+      if (isCorrect) { result++; }
+      problems[problemId].possibles = [];
+    }
 
     console.log(result);
   });
