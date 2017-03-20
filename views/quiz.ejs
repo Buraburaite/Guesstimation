@@ -34,7 +34,7 @@
     <% problems.forEach((problem, problemIndex) => { %>
       <div class="row problem-row center-block"
       id="problem-<%= problemIndex %>"
-      answer="<%= problem.answer %>">
+      answer="<%= problem.answer.trim() %>">
       <div class="row question-row center-block">
         <p><%= problem.question.trim() %></p>
       </div>

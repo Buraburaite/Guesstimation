@@ -15,6 +15,7 @@ $(document).ready((e) => {
     problems[problemId].answer = $(el).attr('answer');
     problems[problemId].possibles = [];
   });
+  console.log(problems);
 
   //Although a named color can be set,
   //$(el).css will always return a rgb string
@@ -36,18 +37,18 @@ $(document).ready((e) => {
   $('.submit-btn').click( (e) => {
     e.preventDefault();
 
-    const problems = $('.problem-row');
-    const totalProblems = problems.length;
+    const problemRows = $('.problem-row');
+    const totalProblems = problemRows.length;
     let result = 0;
 
     $('.problem-row').each( (problemIndex, problemEl) => {
       const problemId = 'problem-' + problemIndex;
 
-      $('.choice-col').each( (rowIndex, choiceEl) => {
+      $(problemEl).find('.choice-col').each( (rowIndex, choiceEl) => {
         const choice = $(choiceEl);
 
         if (choice.css('color') === white) {
-          problems[problemId].possibles.push(choice.text());
+          problems[problemId].possibles.push(choice.text().trim());
         }
       });
 
@@ -60,7 +61,4 @@ $(document).ready((e) => {
 
     console.log(result);
   });
-
-
-  setTimeout(() => console.log(responses), 2000);
 });

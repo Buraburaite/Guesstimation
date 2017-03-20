@@ -82,11 +82,25 @@
   .submit-row {
     width: 400px;
 
-    .submit-quiz-btn {
-      height: 200px;
-      width: 100%;
-      color: black;
-      font-size: 4vh;
+    .btn {
+      height: auto;
+      width: auto;
+      font-size: 8vw;
+      font-weight: bolder;
+      background-repeat: no-repeat;
+      @include border-radius(40px);
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .submit-btn {
+      color: $pallete-5;
+      background: linear-gradient(
+      180deg,
+      $pallete-4,
+      $pallete-2 45%
+      );
+      @include border(4px, solid, $pallete-5);
     }
   }
 }
