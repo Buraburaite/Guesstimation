@@ -18,8 +18,9 @@ body {
   footer {
     width: 101%;
     height: 16vh;
-    position: absolute;
+    position: relative;
     left: -1vw;
+    bottom: 0%;
     z-index: 99;
 
     .footer-miami-row {
