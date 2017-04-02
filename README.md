@@ -1,6 +1,8 @@
 # Guesstiamtion: Experiment in Test-taking Psychology
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://github.com/Buraburaite/Guesstimation)
 
+<i>Note: this site is mobile-only</i>
+
 ### Goals
 This site allows users to take short World History quizzes (all questions are from Khan Academy: https://www.khanacademy.org/humanities/world-history). All questions are multiple-choice, but instead of selecting correct answers, users reject possibilities. Their answer is then chosen randomly from the remaining answer choices. This is meant to force users to focus on leveraging what they know instead of what they don't.
 
