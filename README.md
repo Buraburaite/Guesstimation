@@ -1,4 +1,4 @@
-# Guesstiamtion: Experiment in Test-taking Psychology
+# Guesstimation: Experiment in Test-Taking Psychology
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://github.com/Buraburaite/Guesstimation)
 
 <i>Note: this site is mobile-only</i>
